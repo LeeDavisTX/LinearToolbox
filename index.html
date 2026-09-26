@@ -3,24 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Linear Toolbox — Fit-for-purpose tools for pipeline &amp; energy infrastructure</title>
+<title>Linear Toolbox — Fit-for-purpose tools for linear infrastructure</title>
+<meta name="description" content="Fit-for-purpose browser-based tools for pipeline, energy, and linear infrastructure teams — engineering, survey, ROW, GIS, inspection, and compliance. Without the enterprise price tag.">
+<meta name="theme-color" content="#142442">
+<link rel="icon" href="lt-box-logo.png">
+<link rel="apple-touch-icon" href="lt-box-logo.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Linear Toolbox">
+<meta property="og:description" content="Fit-for-purpose browser-based tools for pipeline, energy, and linear infrastructure teams — engineering, survey, ROW, GIS, inspection, and compliance. Without the enterprise price tag.">
+<meta property="og:image" content="lt-text-logo-stacked.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap">
 <style>
-
 :root{
-  --ink:#16232E;
-  --paper:#F2EEE4;
-  --paper-card:#FBF9F1;
-  --paper-2:#E8E1D0;
-  --pipe:#243746;
-  --pipe-dim:rgba(36,55,70,0.10);
-  --flag:#C8602A;
-  --flag-dim:rgba(200,96,42,0.12);
-  --steel:#5C6F7C;
-  --rule:rgba(22,35,46,0.14);
-  --on-ink-rule:rgba(242,238,228,0.16);
-  --on-ink-steel:#AEB9C2;
+  --ink:#142442;
+  --paper:#FAF9F9;
+  --paper-card:#FFFFFF;
+  --paper-2:#E6E2E2;
+  --pipe:#12161C;
+  --pipe-dim:rgba(18,22,28,0.10);
+  --flag:#B84A1A;
+  --flag-dim:rgba(184,74,26,0.12);
+  --steel:#4A6B8A;
+  --rule:rgba(18,22,28,0.10);
+  --on-ink-rule:rgba(250,249,249,0.16);
+  --on-ink-steel:#E6E2E2;
 }
 body{margin:0;background:var(--paper);color:var(--ink);font-family:'Open Sans',-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased;}
 a{color:inherit;text-decoration:none;}
@@ -29,7 +38,7 @@ p{margin:0;}
 .mono{font-family:'Montserrat',sans-serif;}
 .wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(20px,5vw,56px);}
 .section{padding-block:clamp(48px,7vw,84px);}
-.eyebrow{font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--pipe);font-weight:600;}
+.eyebrow{font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--flag);font-weight:600;}
 .eyebrow-on-ink{color:var(--on-ink-steel);}
 .h-display{font-family:'Montserrat',sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:.005em;line-height:.94;color:var(--ink);text-wrap:balance;}
 .h-display-on-ink{color:var(--paper);}
@@ -42,8 +51,8 @@ p{margin:0;}
 .btn:hover{opacity:.85;}
 .navlink{font-size:14px;font-weight:600;color:var(--ink);}
 .navlink:hover{color:var(--pipe);}
-.card{background:var(--paper-card);border:1px solid var(--rule);padding:22px;display:flex;flex-direction:column;gap:10px;}
-.card-premium{background:var(--paper-card);border:1.5px solid var(--flag);padding:22px;display:flex;flex-direction:column;gap:10px;}
+.card{background:var(--paper-card);border:1px solid var(--rule);padding:22px;display:flex;flex-direction:column;gap:10px;box-shadow:0 1px 3px rgba(18,22,28,0.05);}
+.card-premium{background:var(--paper-card);border:1.5px solid var(--flag);padding:22px;display:flex;flex-direction:column;gap:10px;box-shadow:0 1px 4px rgba(184,74,26,0.08);}
 .tool-cta{background:none;border:none;padding:0;margin-top:2px;font-family:'Open Sans',sans-serif;font-weight:700;font-size:13.5px;color:var(--pipe);cursor:pointer;align-self:flex-start;}
 .tool-cta:hover{color:var(--flag);}
 .tool-cta[href]{text-decoration:none;}
@@ -56,7 +65,7 @@ p{margin:0;}
 .tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
 .tool-name{font-size:17px;font-weight:700;}
 .tool-desc{font-size:14px;line-height:1.5;color:var(--steel);flex-grow:1;}
-.tier{border:1px solid var(--rule);padding:30px;display:flex;flex-direction:column;gap:16px;background:var(--paper-card);}
+.tier{border:1px solid var(--rule);padding:30px;display:flex;flex-direction:column;gap:16px;background:var(--paper-card);box-shadow:0 1px 3px rgba(18,22,28,0.05);}
 .tier-featured{border:2px solid var(--pipe);}
 .price{font-variant-numeric:tabular-nums;font-size:36px;font-weight:600;}
 .price-unit{font-size:14px;color:var(--steel);font-weight:400;}
@@ -80,13 +89,13 @@ p{margin:0;}
 .foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px;}
 
 /* hero texture */
-.hero-band{background-color:var(--ink);background-image:linear-gradient(rgba(242,238,228,0.055) 1px, transparent 1px),linear-gradient(90deg, rgba(242,238,228,0.055) 1px, transparent 1px);background-size:44px 44px;position:relative;}
-.hero-band::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%, rgba(22,35,46,0) 0%, var(--ink) 78%);pointer-events:none;}
+.hero-band{background-color:var(--ink);background-image:linear-gradient(rgba(250,249,249,0.055) 1px, transparent 1px),linear-gradient(90deg, rgba(250,249,249,0.055) 1px, transparent 1px);background-size:44px 44px;position:relative;}
+.hero-band::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%, rgba(184,74,26,0.10) 0%, rgba(184,74,26,0) 45%),radial-gradient(ellipse at 50% 0%, rgba(20,36,66,0) 0%, var(--ink) 78%);pointer-events:none;}
 .hero-inner{position:relative;z-index:1;}
 .monument{width:34px;height:34px;flex-shrink:0;}
 
 /* discipline accordion */
-.disc-accordion{border:1px solid var(--rule);background:var(--paper-card);margin-bottom:14px;}
+.disc-accordion{border:1px solid var(--rule);background:var(--paper-card);margin-bottom:14px;box-shadow:0 1px 3px rgba(18,22,28,0.04);}
 .disc-summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:20px 24px;gap:16px;}
 .disc-summary::-webkit-details-marker{display:none;}
 .disc-summary-label{font-family:'Montserrat',sans-serif;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:14px;color:var(--ink);display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
@@ -118,31 +127,50 @@ details[open] > .disc-summary .disc-toggle{color:var(--flag);}
 details[open] > .faq-summary .faq-toggle{color:var(--flag);}
 .faq-body{padding:0 0 22px;color:var(--steel);font-size:14.5px;line-height:1.65;max-width:68ch;}
 
+/* nav */
+.nav-right{display:flex;align-items:center;gap:14px;position:relative;}
+.nav-toggle-input{position:absolute;width:1px;height:1px;opacity:0;margin:0;}
+.nav-toggle{display:none;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);border:1.5px solid var(--ink);padding:9px 14px;user-select:none;}
+.nav-toggle-input:focus-visible + .nav-toggle{outline:2px solid var(--flag);outline-offset:2px;}
+.nav-links{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+@media (max-width:820px){
+  .nav-toggle{display:block;}
+  .nav-links{display:none;position:absolute;right:0;top:calc(100% + 18px);flex-direction:column;align-items:flex-start;gap:18px;background:var(--paper-card);border:1px solid var(--rule);box-shadow:0 10px 28px rgba(18,22,28,0.14);padding:22px 24px;min-width:200px;z-index:30;}
+  .nav-toggle-input:checked ~ .nav-links{display:flex;}
+}
+
+/* services */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+
 /* contact */
-.contact-card{background:var(--paper-card);border:1px solid var(--rule);padding:30px 26px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;}
+.contact-card{background:var(--paper-card);border:1px solid var(--rule);padding:30px 26px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;box-shadow:0 1px 3px rgba(18,22,28,0.05);}
 .contact-icon{width:44px;height:44px;border-radius:50%;background:var(--pipe);color:var(--paper);display:flex;align-items:center;justify-content:center;}
 .contact-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.6;}
-
 </style>
 </head>
 <body>
+
 <div style="width:100%;background:var(--paper);">
 
   <!-- NAV -->
   <div style="position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--rule);">
     <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:16px;">
-      <div style="display:flex;align-items:center;gap:10px;">
-        <div style="width:16px;height:16px;background:var(--flag);flex-shrink:0;"></div>
-        <span class="h-display" style="font-size:20px;letter-spacing:.03em;">Linear Toolbox</span>
+      <div style="display:flex;align-items:center;">
+        <img src="lt-text-logo-stacked.png" alt="Linear Toolbox" style="height:38px;width:auto;display:block;">
       </div>
-      <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap;">
+      <div class="nav-right">
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+      <label for="nav-toggle" class="nav-toggle">Menu</label>
+      <div class="nav-links">
         <a class="navlink" href="#premium">Premium</a>
         <a class="navlink" href="#tools">Toolbox</a>
+        <a class="navlink" href="#services">Services</a>
         <a class="navlink" href="#pricing">Pricing</a>
         <a class="navlink" href="#faq">FAQ</a>
         <a class="navlink" href="#about">About</a>
         <a class="navlink" href="#contact">Contact</a>
         <a class="btn btn-primary" style="padding:10px 20px;font-size:13px;" href="mailto:email@gmail.com?subject=Linear%20Toolbox%20—%20Get%20Started">Get Started</a>
+      </div>
       </div>
     </div>
   </div>
@@ -150,9 +178,8 @@ details[open] > .faq-summary .faq-toggle{color:var(--flag);}
   <!-- HERO -->
   <div class="hero-band">
     <div class="wrap hero-inner section" style="padding-block:clamp(64px,10vw,108px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:26px;">
-      <div style="display:flex;align-items:center;gap:14px;">
-        <div style="width:32px;height:32px;background:var(--flag);flex-shrink:0;"></div>
-        <span class="h-display h-display-on-ink" style="font-size:clamp(30px,4.4vw,42px);letter-spacing:.03em;">Linear Toolbox</span>
+      <div style="display:flex;align-items:center;">
+        <img src="lt-text-white.png" alt="Linear Toolbox" style="height:clamp(42px,5.8vw,62px);width:auto;display:block;">
       </div>
       <svg class="monument" viewBox="0 0 34 34" fill="none" stroke="var(--flag)" stroke-width="1.4">
         <circle cx="17" cy="17" r="14"></circle>
@@ -178,10 +205,10 @@ details[open] > .faq-summary .faq-toggle{color:var(--flag);}
         <div style="display:flex;flex-direction:column;gap:18px;">
           <span class="eyebrow">Built for the way linear teams actually work</span>
           <h2 class="h-display" style="font-size:clamp(28px,3.4vw,40px);">Pick your discipline. Get straight to work.</h2>
-          <p class="lede">Linear Toolbox replaces clunky, expensive desktop applications with fast, fit-for-purpose tools for engineering, GIS, survey, ROW, integrity, and inspection teams working linear assets — most running straight in your browser, with a few premium tools plugging directly into the AutoCAD or ArcGIS you already run.</p>
+          <p class="lede">Linear Toolbox replaces clunky, expensive desktop applications with fast, fit-for-purpose tools for engineering, design, GIS, survey, ROW, integrity, and inspection teams working linear assets — most running straight in your browser.</p>
         </div>
         <div>
-          <img src="hero-photo.png" alt="Surveyor holding a GPS rover in a pipeline trench alongside newly installed pipe" style="width:100%;height:auto;display:block;border:1px solid var(--rule);">
+          <img src="hero-photo.jpg" alt="Surveyor holding a GPS rover in a pipeline trench alongside newly installed pipe" width="681" height="900" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border:1px solid var(--rule);">
         </div>
       </div>
     </div>
@@ -200,7 +227,7 @@ details[open] > .faq-summary .faq-toggle{color:var(--flag);}
         <div class="benefit-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4.5"></circle><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"></circle></svg>
           <h3 class="tool-name" style="font-size:17px;margin-bottom:6px;">Fit for purpose</h3>
-          <p class="tool-desc">Each tool does one job well, without the bloat of an enterprise platform built to handle every job at once.</p>
+          <p class="tool-desc">Each tool does one job well, without the bloat of an enterprise platform built to handle every situation at once.</p>
         </div>
         <div class="benefit-item">
           <svg viewBox="0 0 24 24"><path d="M20 12.5 12.5 20 4 11.5V4h7.5z"></path><circle cx="9" cy="8" r="1.4" fill="currentColor" stroke="none"></circle></svg>
@@ -220,7 +247,7 @@ details[open] > .faq-summary .faq-toggle{color:var(--flag);}
   <div style="background:var(--ink);color:var(--paper);">
     <div class="wrap section" style="text-align:center;display:flex;flex-direction:column;gap:20px;align-items:center;">
       <h2 class="h-display h-display-on-ink" style="font-size:clamp(26px,3.6vw,42px);max-width:20ch;">Enterprise software solves for the enterprise. Not for the crew doing the work.</h2>
-      <p class="lede lede-on-ink" style="max-width:62ch;">Pipeline projects touch design, survey, ROW, GIS, inspection, and compliance — often the same week, sometimes the same person. Legacy toolboxes force every one of those disciplines onto the same expensive, all-or-nothing enterprise license. Linear Toolbox gives each discipline its own toolbox, priced for what it's worth — most tools open in a browser, and the few that belong inside AutoCAD or ArcGIS live there instead.</p>
+      <p class="lede lede-on-ink" style="max-width:62ch;">One-size-fits-all platforms put every discipline in the same box. Linear Toolbox gives each one its own toolbox: engineering, survey, ROW, GIS, inspection, and compliance. License only the toolboxes your teams need. Most tools run in the browser; the rest plug into AutoCAD or ArcGIS. Everyone works their way, and the data comes out standardized.</p>
     </div>
   </div>
 
@@ -282,6 +309,10 @@ details[open] > .faq-summary .faq-toggle{color:var(--flag);}
           <span class="icon-label">Engineering</span>
         </div>
         <div class="icon-item">
+          <svg viewBox="0 0 24 24"><path d="M3 20h18L3 4z"></path><path d="M7 17.5h7L7 10z"></path></svg>
+          <span class="icon-label">Design</span>
+        </div>
+        <div class="icon-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M15.5 8.5 13 13l-4.5 2.5L11 11z"></path></svg>
           <span class="icon-label">Survey</span>
         </div>
@@ -330,7 +361,7 @@ details[open] > .faq-summary .faq-toggle{color:var(--flag);}
             <button type="button" class="tool-cta">Get Started &gt;</button>
           </div>
           <div class="card-premium">
-            <div class="pill-row"><span class="pill pill-premium">$500/mo</span><span class="pill pill-platform">AutoCAD add-in</span></div>
+            <div class="pill-row"><span class="pill pill-premium">$1,000/mo</span><span class="pill pill-platform">AutoCAD add-in</span></div>
             <span class="tool-name">Transmission Line Plan &amp; Profile Generator (CAD)</span>
             <p class="tool-desc">Auto-generates plan &amp; profile sheets for transmission lines.</p>
             <button type="button" class="tool-cta">Get Started &gt;</button>
@@ -342,19 +373,19 @@ details[open] > .faq-summary .faq-toggle{color:var(--flag);}
         <div class="disc-head">Survey</div>
         <div class="tool-grid">
           <div class="card-premium">
-            <div class="pill-row"><span class="pill pill-premium">$500/mo</span><span class="pill pill-platform">AutoCAD add-in</span></div>
+            <div class="pill-row"><span class="pill pill-premium">$800/mo</span><span class="pill pill-platform">AutoCAD add-in</span></div>
             <span class="tool-name">Plat &amp; Legal Generator</span>
             <p class="tool-desc">Auto-drafts survey plats and legal descriptions from field/GIS data.</p>
             <button type="button" class="tool-cta">Get Started &gt;</button>
           </div>
           <div class="card-premium">
-            <div class="pill-row"><span class="pill pill-premium">$500/mo</span><span class="pill pill-platform">AutoCAD add-in</span></div>
+            <div class="pill-row"><span class="pill pill-premium">$1,000/mo</span><span class="pill pill-platform">AutoCAD add-in</span></div>
             <span class="tool-name">Alignment Sheet Generator (CAD)</span>
             <p class="tool-desc">Produces CAD-based pipeline alignment sheets.</p>
             <button type="button" class="tool-cta">Get Started &gt;</button>
           </div>
           <div class="card-premium">
-            <div class="pill-row"><span class="pill pill-premium">$500/mo</span><span class="pill pill-platform">Browser</span></div>
+            <div class="pill-row"><span class="pill pill-premium">$800/mo</span><span class="pill pill-platform">Browser</span></div>
             <span class="tool-name">Asbuilt QC Engine</span>
             <p class="tool-desc">Automated cleanup and validation for pipeline asbuilt survey data — catches tie-in, manifest, and attribute errors before they reach the deliverable.</p>
             <button type="button" class="tool-cta">Get Started &gt;</button>
@@ -366,7 +397,7 @@ details[open] > .faq-summary .faq-toggle{color:var(--flag);}
         <div class="disc-head">GIS</div>
         <div class="tool-grid">
           <div class="card-premium">
-            <div class="pill-row"><span class="pill pill-premium">$500/mo</span><span class="pill pill-platform">ArcGIS add-in</span></div>
+            <div class="pill-row"><span class="pill pill-premium">$1,000/mo</span><span class="pill pill-platform">ArcGIS add-in</span></div>
             <span class="tool-name">Alignment Sheet Generator (GIS)</span>
             <p class="tool-desc">Produces GIS-based pipeline alignment sheets.</p>
             <button type="button" class="tool-cta">Get Started &gt;</button>
@@ -436,7 +467,7 @@ details[open] > .faq-summary .faq-toggle{color:var(--flag);}
               <div style="display:flex;justify-content:flex-end;"><span class="pill pill-live">Live</span></div>
               <span class="tool-name">Pipeline Bill of Material</span>
               <p class="tool-desc">Auto-generates a bill of materials using standardized material descriptions.</p>
-              <a class="tool-cta" href="https://leedavistx.github.io/PipelinersToolkit/" target="_blank" rel="noopener">Get Started &gt;</a>
+              <a class="tool-cta" href="https://leedavistx.github.io/PipelineBOM/" target="_blank" rel="noopener">Get Started &gt;</a>
             </div>
             <div class="card">
               <span class="tool-name">Pipe Wall Thickness Calculator</span>
@@ -554,8 +585,8 @@ details[open] > .faq-summary .faq-toggle{color:var(--flag);}
               <button type="button" class="tool-cta">Get Started &gt;</button>
             </div>
             <div class="card">
-              <span class="tool-name">Vehicle Mileage Calculator</span>
-              <p class="tool-desc">Quick tool that ties into Google Maps navigation to help calculate vehicle mileage and fuel usage.</p>
+              <span class="tool-name">Job Book &amp; Audit Manager</span>
+              <p class="tool-desc">Document management tool that facilitates regulatory audits.</p>
               <button type="button" class="tool-cta">Get Started &gt;</button>
             </div>
           </div>
@@ -631,6 +662,50 @@ details[open] > .faq-summary .faq-toggle{color:var(--flag);}
     </div>
   </div>
 
+  <!-- SERVICES -->
+  <div class="section" id="services" style="border-top:1px solid var(--rule);background:var(--paper-2);">
+    <div class="wrap">
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:36px;max-width:680px;">
+        <span class="eyebrow">Services</span>
+        <h2 class="h-display" style="font-size:clamp(28px,3.4vw,42px);">When you need it done, not just tooled up.</h2>
+        <p class="lede">Some jobs are one-offs, or need a hand you don't have on staff. Our team does the work directly, using the same tools and expertise behind the toolbox.</p>
+      </div>
+      <div class="services-grid">
+        <div class="card">
+          <span class="tool-name">Drawing Preparation</span>
+          <p class="tool-desc">Plan &amp; profile sheets, permit packages, plats, and alignment sheets — prepared and delivered by our team when you don't have the CAD/GIS seat time.</p>
+          <a class="tool-cta" href="mailto:email@gmail.com?subject=Linear%20Toolbox%20—%20Drawing%20Preparation">Request a quote &gt;</a>
+        </div>
+        <div class="card">
+          <span class="tool-name">Class Location &amp; HCA Reports</span>
+          <p class="tool-desc">Full class location studies and High/Medium Consequence Area reports, researched and delivered ready for your files.</p>
+          <a class="tool-cta" href="mailto:email@gmail.com?subject=Linear%20Toolbox%20—%20Class%20Location%20%26%20HCA%20Reports">Request a quote &gt;</a>
+        </div>
+        <div class="card">
+          <span class="tool-name">Construction GeoFence Setup</span>
+          <p class="tool-desc">We configure and deploy geofence technology directly into the cab of construction equipment, giving operators location awareness and a digital alignment sheet.</p>
+          <a class="tool-cta" href="mailto:email@gmail.com?subject=Linear%20Toolbox%20—%20Construction%20GeoFence%20Setup">Request a quote &gt;</a>
+        </div>
+        <div class="card">
+          <span class="tool-name">Custom GIS/CAD Development</span>
+          <p class="tool-desc">Need something the toolbox doesn't cover yet? We scope and build it — custom scripts, models, and workflows for your environment.</p>
+          <a class="tool-cta" href="mailto:email@gmail.com?subject=Linear%20Toolbox%20—%20Custom%20GIS%2FCAD%20Development">Request a quote &gt;</a>
+        </div>
+        <div class="card">
+          <span class="tool-name">GIS Web Applications</span>
+          <p class="tool-desc">Custom web mapping applications built on your data, for your team or the field — dashboards, viewers, and data-collection apps.</p>
+          <a class="tool-cta" href="mailto:email@gmail.com?subject=Linear%20Toolbox%20—%20GIS%20Web%20Applications">Request a quote &gt;</a>
+        </div>
+        <div class="card">
+          <span class="tool-name">PHMSA Annual Report Support</span>
+          <p class="tool-desc">GIS-based analysis and reporting metrics for your PHMSA annual report — mileage, class location, and incident data compiled and ready to file. Filing itself is on you.</p>
+          <a class="tool-cta" href="mailto:email@gmail.com?subject=Linear%20Toolbox%20—%20PHMSA%20Annual%20Report%20Support">Request a quote &gt;</a>
+        </div>
+      </div>
+      <p style="font-size:14px;color:var(--steel);margin-top:24px;">Every engagement is scoped and quoted individually — <a href="mailto:email@gmail.com?subject=Linear%20Toolbox%20—%20Services%20Inquiry" style="color:var(--pipe);font-weight:600;">reach out</a> and we'll get you a number.</p>
+    </div>
+  </div>
+
   <!-- GETTING STARTED -->
   <div class="section">
     <div class="wrap">
@@ -671,7 +746,7 @@ details[open] > .faq-summary .faq-toggle{color:var(--flag);}
       <div class="grid-3">
         <div class="tier">
           <span class="eyebrow" style="color:var(--pipe);">Discipline Toolbox</span>
-          <div><span class="price mono">$99</span><span class="price-unit"> / mo</span></div>
+          <div><span class="price mono">$150</span><span class="price-unit"> / mo per user</span></div>
           <p style="font-size:14px;color:var(--steel);">Every regular tool in one discipline — PM, Engineering, Survey, ROW, Inspection, GIS, or Integrity &amp; Compliance.</p>
           <div class="divider"></div>
           <ul class="tier-list">
@@ -682,7 +757,7 @@ details[open] > .faq-summary .faq-toggle{color:var(--flag);}
         </div>
         <div class="tier" style="border-color:var(--flag);">
           <span class="eyebrow" style="color:var(--flag);">Premium Tools</span>
-          <div><span class="price mono">$500</span><span class="price-unit"> / mo, per tool</span></div>
+          <div><span class="price mono">As Noted</span><span class="price-unit"> per user</span></div>
           <p style="font-size:14px;color:var(--steel);">Sold individually — the drawing- and deliverable-generating tools.</p>
           <div class="divider"></div>
           <ul class="tier-list">
@@ -692,8 +767,8 @@ details[open] > .faq-summary .faq-toggle{color:var(--flag);}
           </ul>
         </div>
         <div class="tier tier-featured">
-          <span class="eyebrow" style="color:var(--pipe);">All-Access</span>
-          <div><span class="price mono">$2,000</span><span class="price-unit"> / mo</span></div>
+          <span class="eyebrow" style="color:var(--pipe);">Project Team All-Access</span>
+          <div><span class="price mono">$3,000</span><span class="price-unit" style="display:block;margin-top:2px;">for 5 concurrent users, up to 10 logins</span></div>
           <p style="font-size:14px;color:var(--steel);">Every discipline toolbox plus every Premium Tool, one invoice.</p>
           <div class="divider"></div>
           <ul class="tier-list">
@@ -714,7 +789,7 @@ details[open] > .faq-summary .faq-toggle{color:var(--flag);}
 
       <details class="faq-item" open>
         <summary class="faq-summary"><span>What's the difference between a Discipline Toolbox and a Premium Tool?</span><span class="faq-toggle">＋</span></summary>
-        <div class="faq-body">Discipline Toolboxes ($99/mo) cover the everyday tracking, calculation, and reporting work for one discipline. Premium Tools ($500/mo each) generate the actual drawing or GIS/CAD deliverable — plan sheets, permit packages, plats — and are priced separately because of what they replace.</div>
+        <div class="faq-body">Discipline Toolboxes ($150/mo per user) cover the everyday tracking, calculation, and reporting work for one discipline. Premium Tools (price as noted) generate the actual drawing or GIS/CAD deliverable — plan sheets, permit packages, plats — and are priced separately because of what they replace.</div>
       </details>
       <details class="faq-item">
         <summary class="faq-summary"><span>Can I combine tools across disciplines without buying All-Access?</span><span class="faq-toggle">＋</span></summary>
@@ -722,7 +797,7 @@ details[open] > .faq-summary .faq-toggle{color:var(--flag);}
       </details>
       <details class="faq-item">
         <summary class="faq-summary"><span>Is there a seat limit, or can my team share a login?</span><span class="faq-toggle">＋</span></summary>
-        <div class="faq-body">Discipline Toolbox and All-Access plans support team accounts — no per-seat penalty for adding your crew.</div>
+        <div class="faq-body">All-Access is licensed for 5 concurrent users with up to 10 named logins, so a team of up to 10 can share a plan as long as no more than 5 are working in the tools at the same time. Discipline Toolbox plans support team accounts with no per-seat penalty.</div>
       </details>
       <details class="faq-item">
         <summary class="faq-summary"><span>Do you offer a free trial?</span><span class="faq-toggle">＋</span></summary>
@@ -745,7 +820,7 @@ details[open] > .faq-summary .faq-toggle{color:var(--flag);}
       <div style="display:flex;flex-direction:column;gap:16px;max-width:640px;">
         <span class="eyebrow">About</span>
         <h2 class="h-display" style="font-size:clamp(28px,3.2vw,38px);">Built by someone who's used the expensive version.</h2>
-        <p class="lede" style="max-width:56ch;">Linear Toolbox is built by an Air Force veteran with 20+ years in the Pipeline Industry — from field survey to GIS up to Director of Technical Services, leading engineering, survey, GIS, ROW and integrity solutions for capital projects worth billions. The perspective of someone who has stood up the legacy platforms from the inside and knows exactly which parts of the workflow are worth charging for.</p>
+        <p class="lede" style="max-width:56ch;">Linear Toolbox is built by an Air Force veteran with 20+ years in the Pipeline Industry — from field survey to GIS up to Director of Technical Services, leading engineering, survey, GIS, ROW and integrity solutions for capital projects worth billions. The perspective of someone who has stood up the legacy platforms from the inside and knows exactly what kind of tools the project team needs.</p>
         <p class="mono" style="font-size:12px;letter-spacing:.06em;color:var(--steel);">Based in Austin, Texas.</p>
       </div>
     </div>
@@ -785,7 +860,7 @@ details[open] > .faq-summary .faq-toggle{color:var(--flag);}
       <div class="foot-grid" style="margin-bottom:32px;">
         <div style="display:flex;flex-direction:column;gap:10px;">
           <div style="display:flex;align-items:center;gap:8px;">
-            <div style="width:13px;height:13px;background:var(--flag);flex-shrink:0;"></div>
+            <img src="lt-box-logo.png" alt="" style="width:18px;height:18px;flex-shrink:0;border-radius:3px;">
             <span class="h-display" style="font-size:16px;color:var(--paper);letter-spacing:.03em;">Linear Toolbox</span>
           </div>
           <p class="mono" style="font-size:12px;color:var(--paper-2);">Linear Toolbox, LLC · Austin, Texas</p>
@@ -794,6 +869,7 @@ details[open] > .faq-summary .faq-toggle{color:var(--flag);}
           <span class="mono" style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper-2);">Site</span>
           <a class="navlink" style="color:var(--paper);" href="#premium">Premium</a>
           <a class="navlink" style="color:var(--paper);" href="#tools">Toolbox</a>
+          <a class="navlink" style="color:var(--paper);" href="#services">Services</a>
           <a class="navlink" style="color:var(--paper);" href="#pricing">Pricing</a>
           <a class="navlink" style="color:var(--paper);" href="#faq">FAQ</a>
           <a class="navlink" style="color:var(--paper);" href="#about">About</a>
